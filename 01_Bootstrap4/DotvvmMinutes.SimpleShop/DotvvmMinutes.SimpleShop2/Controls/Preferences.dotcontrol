@@ -1,0 +1,9 @@
+@viewModel DotvvmMinutes.SimpleShop.Model.PreferencesDTO, DotvvmMinutes.SimpleShop
+
+<bs:CheckBox Checked="{value: SameShippingAddress}" 
+             FormControlStyle="BootstrapCustom"
+             Text="Shipping address is the same as my billing address"/>
+
+<bs:CheckBox Checked="{value: SaveAddress}"
+             FormControlStyle="BootstrapCustom"
+             Text="Save this information for next time" />

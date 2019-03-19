@@ -1,0 +1,54 @@
+﻿@viewModel DotvvmMinutes.LoadingAnimation.ViewModels.DefaultViewModel, DotvvmMinutes.LoadingAnimation
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <bs:Row>
+
+        <bs:Column SizeMD="4"
+                   FlexDecorator.OrderMd="2"
+                   class="mb-4">
+
+            <cc:Cart DataContext="{value: Cart}" />
+
+        </bs:Column>
+
+        <bs:Column SizeMD="8" FlexDecorator.OrderMd="1">
+
+            <div DataContext="{value: Order}"
+                 Validation.Target="{value: _this}"
+                 Validator.HideWhenValid="true">
+
+                <cc:BillingAddress DataContext="{value: BillingAddress}"
+                                   Countries="{value: _root.Countries}"
+                                   States="{value: _root.States}" />
+
+                <hr class="mb-4">
+
+                <cc:Preferences DataContext="{value: Preferences}" />
+
+                <hr class="mb-4">
+
+                <bs:Button Type="Primary" Size="Large" IsBlockButton="true"
+                           ButtonTagName="button"
+                           Text="Continue to checkout"
+                           IsSubmitButton="true"
+                           Click="{command: _root.Checkout()}"
+                           PostBack.Concurrency="Deny">
+                    <PostBack.Handlers>
+                        <cc:LoadingAnimationPostBackHandler />
+                    </PostBack.Handlers>
+                </bs:Button>
+
+                <%--<bs:Button Type="Primary" Size="Large" IsBlockButton="true"
+                           ButtonTagName="button"
+                           Text="Continue to checkout"
+                           IsSubmitButton="true"
+                           Click="{command: _root.Checkout()}">
+                </bs:Button>--%>
+            </div>
+
+
+        </bs:Column>
+    </bs:Row>
+
+</dot:Content>

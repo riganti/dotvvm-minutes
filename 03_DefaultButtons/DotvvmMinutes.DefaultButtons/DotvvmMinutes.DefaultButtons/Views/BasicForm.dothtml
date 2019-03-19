@@ -1,0 +1,24 @@
+﻿@viewModel DotvvmMinutes.DefaultButtons.ViewModels.BasicFormViewModel, DotvvmMinutes.DefaultButtons
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <form>
+        <p>
+            <label>User Name</label><br />
+            <dot:TextBox Text="{value: UserName}" />
+        </p>
+        <p>
+            <label>Password</label><br />
+            <dot:TextBox Text="{value: Password}" Type="Password" />
+        </p>
+
+        <p>
+            <dot:Button Text="Sign In" 
+                        Click="{command: SignIn()}"
+                        IsSubmitButton="true" />
+        </p>
+    </form>
+
+</dot:Content>
+

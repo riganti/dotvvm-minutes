@@ -1,0 +1,62 @@
+@viewModel DotvvmMinutes.SimpleShop.Model.CartDTO, DotvvmMinutes.SimpleShop
+
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Your cart</span>
+    
+    <bs:Badge Text="{value: ItemCount}" 
+              Type="Secondary" 
+              VisualStyle="Pill" />
+</h4>
+
+<bs:ListGroup DataSource="{value: CartItems}">
+    <ItemsContentTemplate>
+
+        <div class="d-flex justify-content-between">
+            <div class-text-success="{value: IsPromo}">
+                <h6 class="my-0">{{value: Name}}</h6>
+                <small class="text-muted">{{value: Description}}</small>
+            </div>
+
+            <span class-text-success="{value: IsPromo}">
+                {{value: Price.ToString("c0")}}
+            </span>
+        </div>
+
+    </ItemsContentTemplate>
+</bs:ListGroup>
+
+<bs:ListGroup class="mb-3">
+    <bs:ListGroupItem>
+        <div class="d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>
+                {{value: TotalPrice.ToString("c0")}}
+            </strong>
+        </div>
+    </bs:ListGroupItem>
+</bs:ListGroup>    
+
+<bs:Card>
+    <bs:CardBody>
+        <form DataContext="{value: Promo}"
+              Validation.Target="{value: _this}"
+              Validator.InvalidCssClass="is-invalid">
+
+            <bs:InputGroup>
+                <RightTemplate>
+                    <bs:InputGroupButton Text="Redeem"
+                                         IsSubmitButton="true"
+                                         Click="{command: Redeem()}"
+                                         Type="Secondary" />
+                </RightTemplate>
+
+                <bs:InputGroupTextBox Text="{value: Code}"
+                                      Validator.Value="{value: Code}"
+                                      Placeholder="Promo code" />                
+            </bs:InputGroup>
+
+        </form>
+    </bs:CardBody>
+</bs:Card>
+
+

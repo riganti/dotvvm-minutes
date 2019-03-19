@@ -1,0 +1,12 @@
+@viewModel DotvvmMinutes.SimpleShop.Model.PreferencesDTO, DotvvmMinutes.SimpleShop
+
+<div class="custom-control custom-checkbox">
+    <dot:CheckBox class="custom-control-input" ID="same-address" 
+                  Checked="{value: SameShippingAddress}" />
+    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+</div>
+<div class="custom-control custom-checkbox">
+    <dot:CheckBox class="custom-control-input" ID="save-info"
+                  Checked="{value: SaveAddress}" />
+    <label class="custom-control-label" for="save-info">Save this information for next time</label>
+</div>

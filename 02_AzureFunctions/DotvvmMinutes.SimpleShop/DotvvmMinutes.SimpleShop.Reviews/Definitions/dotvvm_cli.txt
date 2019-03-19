@@ -1,0 +1,3 @@
+Run this script to add REST API client to the project:
+
+dotnet dotvvm api create ..\DotvvmMinutes.SimpleShop.Reviews\Definitions\swagger.json DotvvmMinutes.SimpleShop.Api Api/ApiClient.cs wwwroot/Scripts/ApiClient.ts

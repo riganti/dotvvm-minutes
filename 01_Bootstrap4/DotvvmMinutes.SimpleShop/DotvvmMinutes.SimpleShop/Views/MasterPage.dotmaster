@@ -1,0 +1,39 @@
+﻿@viewModel DotvvmMinutes.SimpleShop.ViewModels.MasterPageViewModel, DotvvmMinutes.SimpleShop
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DotvvmMinutes.SimpleShop</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <div class="mx-auto mb-4">
+                <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" height="72">
+                <img src="https://www.dotvvm.com/Content/img/logos/logo-dotvvm.svg" alt="" height="72">
+            </div>
+
+            <h2>Checkout form</h2>
+            <p class="lead">This is a sample page showing how to upgrade to use DotVVM with Bootstrap 4.</p>
+        </div>
+
+        <dot:ContentPlaceHolder ID="MainContent" />
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">Inspired by the official <a href="https://getbootstrap.com/docs/4.1/examples/checkout/">Bootstrap Checkout Example</a></p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

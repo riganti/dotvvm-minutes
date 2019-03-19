@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "projectName": "DotvvmMinutes.SimpleShop",
+  "rootNamespace": "DotvvmMinutes.SimpleShop",
+  "uiTestProjectPath": null,
+  "uiTestProjectRootNamespace": null,
+  "apiClients": [
+    {
+      "swaggerFile": "..\\DotvvmMinutes.SimpleShop.Reviews\\Definitions\\swagger.json",
+      "csharpClient": "Api/ApiClient.cs",
+      "typescriptClient": "wwwroot/Scripts/ApiClient.ts",
+      "namespace": "DotvvmMinutes.SimpleShop.Api",
+      "compileTypescript": true,
+      "generateWrapperClass": true,
+      "isSingleClient": true,
+      "fetchOptions": {
+        "credentials": "same-origin"
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+﻿@viewModel DotvvmMinutes.SimpleShop.ViewModels.DefaultViewModel, DotvvmMinutes.SimpleShop
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <bs:Row>
+
+        <bs:Column SizeMD="4"
+                   FlexDecorator.OrderMd="2"
+                   class="mb-4">
+
+            <cc:Cart DataContext="{value: Cart}" />
+
+        </bs:Column>
+
+        <bs:Column SizeMD="8" FlexDecorator.OrderMd="1">
+
+            <form DataContext="{value: Order}"
+                  Validation.Target="{value: _this}"
+                  Validator.HideWhenValid="true">
+
+                <cc:BillingAddress DataContext="{value: BillingAddress}"
+                                   Countries="{value: _root.Countries}"
+                                   States="{value: _root.States}" />
+
+                <hr class="mb-4">
+
+                <cc:Preferences DataContext="{value: Preferences}" />
+
+                <hr class="mb-4">
+
+                <dot:Button class="btn btn-primary btn-lg btn-block"
+                            Text="Continue to checkout"
+                            IsSubmitButton="true"
+                            Click="{staticCommand: _root.IsConfirmVisible = true}" />
+            </form>
+
+        </bs:Column>
+    </bs:Row>
+
+    <bs:ModalDialog IsDisplayed="{value: IsConfirmVisible}">
+        <HeaderTemplate>
+            <h4>Confirm checkout</h4>
+        </HeaderTemplate>
+
+        <ContentTemplate>
+            <p>Do you really want to continue with your order?</p>
+        </ContentTemplate>
+
+        <FooterTemplate>
+            <bs:Button Type="Primary" Text="Checkout" Click="{command: Checkout()}" IsSubmitButton />
+            <bs:Button Type="Light" Text="Cancel" Click="{staticCommand: IsConfirmVisible = false}" />
+        </FooterTemplate>
+    </bs:ModalDialog>
+
+</dot:Content>

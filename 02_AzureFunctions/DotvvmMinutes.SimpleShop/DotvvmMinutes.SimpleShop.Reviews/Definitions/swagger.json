@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "DotVVM Minutes - Ratings API"
+  },
+  "host": "dotvvmminutesdemo.azurewebsites.net",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/rating/{productId}": {
+      "get": {
+        "summary": "Gets average rating for a specified product.",
+        "operationId": "GetRatingForProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "description": "ID of the product",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Posts a new rating for a specified product.",
+        "operationId": "RateProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "productId",
+            "description": "ID of the product",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "ratingValue",
+            "description": "Rating value (1..5)",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Rating is out of range"
+          }
+        }
+      }
+    }
+  }
+}

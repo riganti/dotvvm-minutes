@@ -1,0 +1,125 @@
+@viewModel DotvvmMinutes.LoadingAnimation.Model.AddressDTO, DotvvmMinutes.LoadingAnimation
+@baseType DotvvmMinutes.LoadingAnimation.Controls.BillingAddress, DotvvmMinutes.LoadingAnimation
+
+<h4 class="mb-3">Billing address</h4>
+
+<bs:Row class="mb-3">
+    <bs:Column SizeMD="6">
+
+        <bs:FormGroup LabelText="First name">
+            <bs:TextBox ID="firstName"
+                        Text="{value: FirstName}" />
+
+            <div class="text-danger" Validator.Value="{value: FirstName}">
+                Valid first name is required.
+            </div>
+        </bs:FormGroup>
+
+    </bs:Column>
+    <bs:Column SizeMD="6">
+
+        <bs:FormGroup LabelText="Last name">
+            <bs:TextBox ID="lastName"
+                        Text="{value: LastName}" />
+
+            <div class="text-danger" Validator.Value="{value: LastName}">
+                Valid last name is required.
+            </div>
+        </bs:FormGroup>
+
+    </bs:Column>
+</bs:Row>
+
+<bs:FormGroup LabelText="Username" class="mb-3">
+    <bs:InputGroup>
+        <LeftTemplate>
+            <bs:InputGroupLiteral Text="@" />
+        </LeftTemplate>
+        <bs:InputGroupTextBox Text="{value: Username}"
+                              Placeholder="Username" />
+    </bs:InputGroup>
+
+    <div class="text-danger" Validator.Value="{value: Username}"
+         style="width: 100%">
+        Your username is required.
+    </div>
+</bs:FormGroup>
+
+<bs:FormGroup class="mb-3">
+    <LabelTemplate>
+        Email <span class="text-muted">(Optional)</span>
+    </LabelTemplate>
+
+    <bs:TextBox ID="email"
+                Placeholder="you@example.com"
+                Text="{value: Email}" />
+
+    <div class="text-danger" Validator.Value="{value: Email}">
+        Please enter a valid email address for shipping updates.
+    </div>
+</bs:FormGroup>
+
+<bs:FormGroup LabelText="Address" class="mb-3">
+    <bs:TextBox ID="address"
+                placeholder="1234 Main St"
+                Text="{value: Address}" />
+
+    <div class="text-danger" Validator.Value="{value: Address}">
+        Please enter your shipping address.
+    </div>
+</bs:FormGroup>
+
+<bs:FormGroup>
+    <LabelTemplate>
+        Address 2 <span class="text-muted">(Optional)</span>
+    </LabelTemplate>
+
+    <bs:TextBox ID="address2"
+                placeholder="Apartment or suite"
+                Text="{value: Address2}" />
+</bs:FormGroup>
+
+<bs:Row>
+    <bs:Column SizeMD="5">
+
+        <bs:FormGroup LabelText="Country">
+            <bs:ComboBox ID="country"
+                         DataSource="{value: _control.Countries}"
+                         SelectedValue="{value: Country}"
+                         EmptyItemText="(select)" />
+
+            <div class="text-danger" Validator.Value="{value: Country}">
+                Please select a valid country.
+            </div>
+        </bs:FormGroup>
+
+    </bs:Column>
+    <bs:Column Size="4">
+
+        <bs:FormGroup LabelText="State">
+            <bs:ComboBox ID="state"
+                         DataSource="{value: _control.States}"
+                         SelectedValue="{value: State}"
+                         EmptyItemText="(select)" />
+
+            <div class="text-danger" Validator.Value="{value: State}">
+                Please provide a valid state.
+            </div>
+        </bs:FormGroup>
+
+    </bs:Column>
+
+    <bs:Column Size="3">
+        
+        <bs:FormGroup LabelText="Zip">
+            <bs:TextBox ID="zip"
+                        Text="{value: Zip}" />
+
+            <div class="text-danger" Validator.Value="{value: Zip}">
+                Zip code required.
+            </div>
+        </bs:FormGroup>
+
+    </bs:Column>
+
+</bs:Row>

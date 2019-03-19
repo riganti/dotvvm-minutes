@@ -1,0 +1,55 @@
+@viewModel DotvvmMinutes.SimpleShop.Model.CartDTO, DotvvmMinutes.SimpleShop
+
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Your cart</span>
+    <span class="badge badge-secondary badge-pill">
+        {{value: ItemCount}}
+    </span>
+</h4>
+
+<ul class="list-group mb-3">
+
+    <dot:Repeater DataSource="{value: CartItems}" RenderWrapperTag="false">
+
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+
+            <div class-text-success="{value: IsPromo}">
+                <h6 class="my-0">{{value: Name}}</h6>
+                <small class="text-muted">{{value: Description}}</small>
+            </div>
+
+            <span class-text-success="{value: IsPromo}">
+                {{value: Price.ToString("c0")}}
+            </span>
+        </li>
+
+    </dot:Repeater>
+
+    <li class="list-group-item d-flex justify-content-between">
+        <span>Total (USD)</span>
+        <strong>
+            {{value: TotalPrice.ToString("c0")}}
+        </strong>
+    </li>
+</ul>
+
+<form class="card p-2" 
+      DataContext="{value: Promo}"
+      Validation.Target="{value: _this}"
+      Validator.InvalidCssClass="is-invalid">
+
+    <div class="input-group">
+        <dot:TextBox class="form-control" 
+                     Text="{value: Code}" 
+                     placeholder="Promo code"
+                     Validator.Value="{value: Code}"/>
+
+        <div class="input-group-append">
+            <dot:Button Text="Redeem" 
+                        IsSubmitButton="true"
+                        Click="{command: Redeem()}"
+                        class="btn btn-secondary"/>
+        </div>
+    </div>
+
+</form>

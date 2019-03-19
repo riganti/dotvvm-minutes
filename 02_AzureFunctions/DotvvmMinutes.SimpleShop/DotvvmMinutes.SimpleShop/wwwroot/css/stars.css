@@ -1,0 +1,11 @@
+﻿.star-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+    .star {
+        text-decoration: none !important;
+        font-size: 1.5em;
+    }
+        .star:hover, .star:hover ~ .star {
+            color: red !important;
+        }

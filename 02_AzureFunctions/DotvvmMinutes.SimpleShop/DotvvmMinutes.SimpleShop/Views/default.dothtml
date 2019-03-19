@@ -1,0 +1,22 @@
+﻿@viewModel DotvvmMinutes.SimpleShop.ViewModels.DefaultViewModel, DotvvmMinutes.SimpleShop
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <dot:Repeater DataSource="{value: Products}" class="row">
+        
+        <div class="card m-3" style="width: 18rem">
+            <img class="card-img-top" src="{value: ImageUrl}" />
+
+            <div class="card-body">
+                <h5 class="card-title">{{value: Name}}</h5>
+                <dot:RouteLink RouteName="Product" 
+                               Param-Id="{value: Id}"
+                               Text="Buy Now"
+                               class="btn btn-primary" />
+            </div>
+        </div>
+
+    </dot:Repeater>
+
+</dot:Content>

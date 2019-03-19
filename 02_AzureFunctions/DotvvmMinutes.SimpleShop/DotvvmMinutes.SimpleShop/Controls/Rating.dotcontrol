@@ -1,0 +1,31 @@
+﻿@viewModel DotvvmMinutes.SimpleShop.ViewModels.ProductDetailViewModel, DotvvmMinutes.SimpleShop 
+
+<p class="badge badge-info" 
+   style="font-size: 2rem"
+   Visible="{value: _functions.GetRatingForProduct(ProductId) > 0}">
+    
+    <dot:Literal Text="{value: _functions.GetRatingForProduct(ProductId)}" 
+                 FormatString="n1" />
+</p>
+
+<div class="star-rating">
+    <dot:LinkButton class="star" 
+                    Text="★" 
+                    Click="{staticCommand: _functions.RateProduct(ProductId, 5)}" />
+
+    <dot:LinkButton class="star" 
+                    Text="★" 
+                    Click="{staticCommand: _functions.RateProduct(ProductId, 4)}" />
+
+    <dot:LinkButton class="star" 
+                    Text="★" 
+                    Click="{staticCommand: _functions.RateProduct(ProductId, 3)}" />
+
+    <dot:LinkButton class="star" 
+                    Text="★" 
+                    Click="{staticCommand: _functions.RateProduct(ProductId, 2)}" />
+
+    <dot:LinkButton class="star" 
+                    Text="★" 
+                    Click="{staticCommand: _functions.RateProduct(ProductId, 1)}" />
+</div>

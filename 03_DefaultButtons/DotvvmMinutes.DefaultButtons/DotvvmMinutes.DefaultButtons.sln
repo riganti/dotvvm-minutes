@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotvvmMinutes.DefaultButtons", "DotvvmMinutes.DefaultButtons\DotvvmMinutes.DefaultButtons.csproj", "{D36C6533-381C-45B8-9B15-19CA15C18753}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D36C6533-381C-45B8-9B15-19CA15C18753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36C6533-381C-45B8-9B15-19CA15C18753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36C6533-381C-45B8-9B15-19CA15C18753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36C6533-381C-45B8-9B15-19CA15C18753}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C18298D7-0860-4DEB-928E-42AA95315B22}
+	EndGlobalSection
+EndGlobal

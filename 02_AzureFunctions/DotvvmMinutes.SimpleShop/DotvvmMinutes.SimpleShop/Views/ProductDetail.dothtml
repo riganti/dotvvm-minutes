@@ -1,0 +1,69 @@
+﻿@viewModel DotvvmMinutes.SimpleShop.ViewModels.ProductDetailViewModel, DotvvmMinutes.SimpleShop
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <img src="{value: Product.ImageUrl}" alt="{value: Product.Name}"
+                 class="img-thumbnail mb-3" />
+
+            <p>
+                Size: 13'' x 9''<br />
+                Frame: birch wood
+            </p>
+
+            <p class="badge badge-secondary" style="font-size: 2rem">
+                $ 49.9
+            </p>
+        </div>
+
+        <div class="col-md-6">
+            <h3>{{value: Product.Name}}</h3>
+
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam posuere lacus quis dolor. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Aenean vel massa quis mauris vehicula lacinia. Nulla accumsan, elit sit amet varius semper, 
+            nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Quisque porta. Sed vel lectus.</p>
+            <p>Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Integer malesuada. Etiam egestas wisi a erat. Sed ac dolor sit amet purus malesuada congue. Nemo enim ipsam voluptatem quia voluptas sit 
+            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Maecenas aliquet accumsan leo. Pellentesque sapien. </p>
+
+            <form class="row mt-4">
+                <div class="form-group col-md-6">
+                    <label>Frame Color</label>
+                    <div>
+                        <dot:ComboBox DataSource="{value: Colors}"
+                                      SelectedValue="{value: Color}"
+                                      EmptyItemText="(select)"
+                                      class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Quantity</label>
+                    <div>
+                        <dot:TextBox Text="{value: Quantity}"
+                                     class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>&nbsp;</label>
+                    <div>
+                        <dot:Button Text="Buy Now" class="btn btn-primary"
+                                    Click="{command: BuyNow()}" />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-md-2">
+            <h4>Reviews</h4>
+            
+            <cc:Rating />
+        </div>
+
+    </div>
+
+
+</dot:Content>
+

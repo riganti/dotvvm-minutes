@@ -1,0 +1,7 @@
+{
+  "name": "dotvvmminutes.simpleshop",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "v4.1.3"
+  }
+}

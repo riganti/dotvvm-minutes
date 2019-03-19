@@ -1,0 +1,28 @@
+﻿@viewModel DotvvmMinutes.DefaultButtons.ViewModels.GridViewModel, DotvvmMinutes.DefaultButtons
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <bp:GridView DataSource="{value: Countries}" InlineEditing="true">
+        <Columns>
+            <bp:GridViewTextColumn ValueBinding="{value: Id}" HeaderText="ID" IsEditable="false" />
+            <bp:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
+            <bp:GridViewTemplateColumn>
+                <ContentTemplate>
+                    <dot:Button Text="Edit" Click="{command: _root.Edit(_this)}" />
+                </ContentTemplate>
+                <EditTemplate>
+                    <dot:Button Text="Save" Click="{command: _root.Save(_this)}" 
+                                FormHelpers.IsDefaultButton="true" />
+                    <dot:Button Text="Cancel" Click="{command: _root.CancelEdit(_this)}" 
+                                FormHelpers.IsCancelButton="true" />
+                </EditTemplate>
+            </bp:GridViewTemplateColumn>
+        </Columns>
+        <EditRowDecorators>
+            <dot:Decorator FormHelpers.DefaultButtonContainer="true" />
+        </EditRowDecorators>
+    </bp:GridView>
+
+    <dot:RequiredResource Name="FormHelpers" />
+</dot:Content>
