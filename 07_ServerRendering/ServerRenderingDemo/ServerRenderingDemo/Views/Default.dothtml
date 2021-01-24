@@ -1,0 +1,31 @@
+﻿@viewModel ServerRenderingDemo.ViewModels.DefaultViewModel, ServerRenderingDemo
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+	<div class="container">
+
+        <dot:Repeater DataSource="{value: Articles}" RenderSettings.Mode="Server">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{value: Title}}</h5>
+                    <p class="card-text">{{value: Abstract}}</p>
+                    <dot:RouteLink RouteName="Article" Param-Id="{value: Id}" 
+                                   class="btn btn-primary">Read article</dot:RouteLink>
+                </div>
+            </div>
+        </dot:Repeater>
+        
+        <ul class="pagination justify-content-around">
+            <li class="page-item mr-auto" IncludeInPage="{resource: PageIndex > 0}">
+                <dot:RouteLink RouteName="Default" class="page-link" 
+                               Query-page="{value: PageIndex - 1}">Previous</dot:RouteLink>
+            </li>
+            <li class="page-item ml-auto" IncludeInPage="{resource: PageIndex < PagesCount - 1}">
+                <dot:RouteLink RouteName="Default" class="page-link" 
+                               Query-page="{value: PageIndex + 1}">Next</dot:RouteLink>
+            </li>
+        </ul>
+
+    </div>
+
+</dot:Content>

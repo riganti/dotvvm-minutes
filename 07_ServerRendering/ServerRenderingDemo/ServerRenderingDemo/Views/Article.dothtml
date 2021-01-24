@@ -1,0 +1,15 @@
+﻿@viewModel ServerRenderingDemo.ViewModels.ArticleViewModel, ServerRenderingDemo
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="container">
+        <h2>{{resource: Article.Title}}</h2>
+        <hr />
+        <dot:HtmlLiteral Html="{resource: Article.Html}" />
+
+        <dot:RouteLink RouteName="Default">&laquo; back</dot:RouteLink>
+    </div>
+
+</dot:Content>
+

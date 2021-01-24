@@ -1,0 +1,28 @@
+﻿@viewModel ServerRenderingDemo.ViewModels.MasterPageViewModel, ServerRenderingDemo
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ServerRenderingDemo</title>
+	<dot:RequiredResource Name="bootstrap" />
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Awesome blog</h1>
+            <p class="lead">Random thoughts from a random person...</p>
+        </div>
+    </div>
+
+    <dot:ContentPlaceHolder ID="MainContent" />
+
+    <div class="jumbotron jumbotron-fluid mt-4">
+        <div class="container">
+            <p class="text-center">&copy; {{resource: DateTime.Now.Year}} DotVVM</p>
+        </div>
+    </div>
+
+</body>
+</html>
