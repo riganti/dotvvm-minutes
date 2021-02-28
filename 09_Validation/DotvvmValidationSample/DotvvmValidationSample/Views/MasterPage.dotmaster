@@ -1,0 +1,18 @@
+﻿@viewModel DotvvmValidationSample.ViewModels.MasterPageViewModel, DotvvmValidationSample
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>DotVVM Validation Sample</title>
+	<dot:RequiredResource Name="bootstrap"/>
+	<dot:RequiredResource Name="Styles"/>
+</head>
+<body Validator.InvalidCssClass="is-invalid" Validator.SetToolTipText="true">
+
+    <div class="container">
+        <dot:ContentPlaceHolder ID="MainContent" />
+    </div>
+
+</body>
+</html>

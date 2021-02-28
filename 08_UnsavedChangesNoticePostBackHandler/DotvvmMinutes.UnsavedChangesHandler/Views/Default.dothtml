@@ -1,0 +1,48 @@
+﻿@viewModel DotvvmMinutes.UnsavedChangesHandler.ViewModels.DefaultViewModel, DotvvmMinutes.UnsavedChangesHandler
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="row">
+        <div class="col-xl-8">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="jumbotron">
+                        <h1>Slide {{value: CurrentSlideId}}</h1>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <dot:ComboBox class="form-control"
+                                  DataSource="{value: Slides}"
+                                  ItemTextBinding="{value: "Slide " + _this}"
+                                  SelectedValue="{value: SelectedSlideId}"
+                                  SelectionChanged="{command: OnSlideChanged()}">
+                        <PostBack.Handlers>
+                            <cc:UnsavedChangesNoticePostBackHandler
+                                HasUnsavedChangesBinding="{value: CommentText.Length > 0}" />
+                        </PostBack.Handlers>
+                    </dot:ComboBox>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-4">
+
+            <div class="card">
+                <div class="card-body">
+                    <h4>Post your comment</h4>
+
+                    <dot:TextBox class="form-control"
+                                 Text="{value: CommentText}"
+                                 Type="MultiLine" />
+                </div>
+                <div class="card-footer">
+                    <dot:Button Text="Post Comment"
+                                Click="{command: PostComment()}" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</dot:Content>

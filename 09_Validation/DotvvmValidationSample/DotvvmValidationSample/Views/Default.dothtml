@@ -1,0 +1,123 @@
+﻿@viewModel DotvvmValidationSample.ViewModels.DefaultViewModel, DotvvmValidationSample
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="jumbotron">
+        <h1 class="display-4">DotVVM Validation Sample</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sign in</h5>
+
+                    <form DataContext="{value: SignInForm}">
+                        <div class="form-group">
+                            <label for="signin-email">E-mail address</label>
+                            <dot:TextBox Type="email"
+                                         ID="signin-email"
+                                         class="form-control"
+                                         Text="{value: Email}"                                         
+                                         Validator.Value="{value: Email}"
+                                         placeholder="Enter your e-mail" />
+
+                            <%--<dot:Validator InvalidCssClass="text-danger" 
+                                           ShowErrorMessageText="true"
+                                           Value="{value: Email}" />--%>
+                        </div>
+                        <div class="form-group">
+                            <label for="signin-password">Password</label>
+                            <dot:TextBox Type="Password"
+                                         ID="signin-password"
+                                         class="form-control" 
+                                         Text="{value: Password}"
+                                         Validator.Value="{value: Password}"
+                                         placeholder="Password" />
+                        </div>
+                        
+                        <dot:ValidationSummary Validation.Target="{value: _this}"
+                                               IncludeErrorsFromTarget="true"
+                                               HideWhenValid="true"
+                                               class="alert alert-danger"/>
+
+                        <dot:Button IsSubmitButton="true" 
+                                    ButtonTagName="button"
+                                    class="btn btn-primary"
+                                    Click="{command: _root.SignIn()}"
+                                    Validation.Target="{value: _this}">
+                            Sign In
+                        </dot:Button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Create your account</h5>
+
+                    <form DataContext="{value: CreateAccountForm}">
+                        <div class="form-group">
+                            <label for="createaccount-name">Your name</label>
+                            <dot:TextBox ID="createaccount-name"
+                                         class="form-control"
+                                         Text="{value: Name}"
+                                         Validator.Value="{value: Name}"
+                                         placeholder="Enter your name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="createaccount-email">E-mail address</label>
+                            <dot:TextBox Type="email"
+                                         ID="createaccount-email"
+                                         class="form-control"
+                                         Text="{value: Email}"
+                                         Validator.Value="{value: Email}"
+                                         placeholder="Enter your e-mail" />
+                        </div>
+                        <div class="form-group">
+                            <label for="createaccount-password">Password</label>
+                            <dot:TextBox Type="Password"
+                                         ID="createaccount-password"
+                                         class="form-control"
+                                         Text="{value: Password}"
+                                         Validator.Value="{value: Password}"
+                                         placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="createaccount-password2">Confirm password</label>
+                            <dot:TextBox Type="Password"
+                                         ID="createaccount-password2"
+                                         class="form-control"
+                                         Text="{value: Password2}"
+                                         Validator.Value="{value: Password2}"
+                                         placeholder="Password again" />
+                        </div>
+                        <div class="form-group">
+                            <dot:CheckBox ID="createaccount-agree"
+                                          Checked="{value: AgreeWithConditions}">
+                                I agree with terms &amp; conditions
+                            </dot:CheckBox>
+                        </div>
+
+                        <dot:ValidationSummary Validation.Target="{value: _this}"
+                                               IncludeErrorsFromTarget="true"
+                                               HideWhenValid="true"
+                                               class="alert alert-danger" />
+
+                        <dot:Button IsSubmitButton="true"
+                                    ButtonTagName="button"
+                                    class="btn btn-primary"
+                                    Click="{command: _root.CreateAccount()}"
+                                    Validation.Target="{value: _this}">
+                            Create Account
+                        </dot:Button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</dot:Content>

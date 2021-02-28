@@ -1,0 +1,9 @@
+﻿@viewModel DotvvmValidationSample.ViewModels.SuccessViewModel, DotvvmValidationSample
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h2>Success</h2>
+
+</dot:Content>
+
