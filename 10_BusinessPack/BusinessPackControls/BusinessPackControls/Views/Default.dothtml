@@ -1,0 +1,48 @@
+﻿@viewModel BusinessPackControls.ViewModels.DefaultViewModel, BusinessPackControls
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Edit your profile</h1>
+
+    <form DataContext="{value: Profile}">
+        <div class="form-field">
+            <label>Name</label>
+            <dot:TextBox Text="{value: FullName}" />
+        </div>
+        <div class="form-field">
+            <label>Country</label>
+            <dot:ComboBox DataSource="{value: _root.Countries}"
+                          SelectedValue="{value: CountryId}"
+                          ItemTextBinding="{value: Name}"
+                          ItemValueBinding="{value: Id}" />
+        </div>
+        <div class="form-field">
+            <label>Interests</label>
+            <dot:Repeater DataSource="{value: _root.Interests}">
+                <dot:CheckBox CheckedItems="{value: _parent.InterestIds}"
+                              Text="{value: Name}" 
+                              CheckedValue="{value: Id}" />
+            </dot:Repeater>
+        </div>
+        <div class="form-field">
+            <label>Profile image</label>
+            <dot:FileUpload UploadedFiles="{value: _root.ProfileImage}"
+                            UploadCompleted="{command: _root.ProfileImageUploaded()}"
+                            Validation.Enabled="false"/>
+            <img src="{value: ProfileImageUrl}"
+                 alt="{value: FullName}" 
+                 Visible="{value: ProfileImageUrl != null}"
+                 class="profile-image"/>
+        </div>
+
+        <div class="form-buttons">
+            <dot:Button Text="Save" 
+                        Click="{command: _root.Save()}" 
+                        IsSubmitButton="true"/>
+            <dot:Button Text="Cancel" 
+                        Click="{command: _root.Cancel()}" 
+                        Validation.Enabled="false"/>
+        </div>
+    </form>
+
+</dot:Content>

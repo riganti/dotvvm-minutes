@@ -11,5 +11,10 @@ This repository contains code samples for [DotVVM Minutes](https://www.youtube.c
 * [DotVVM Minutes #7: Server Rendering, Value & Resource binding](https://www.youtube.com/watch?v=FLIcYBaja-I&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=7&ab_channel=DotVVM)
 * [DotVVM Minutes #8: Modal Confirm Dialog with postback handlers](https://www.youtube.com/watch?v=m0B5aTQCn1Y&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=8&ab_channel=DotVVM)
 * [DotVVM Minutes #9: Validation](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=9&ab_channel=DotVVM)
+* [DotVVM Minutes #10: Nice-looking UI with DotVVM Business Pack](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=10&ab_channel=DotVVM)
+* [DotVVM Minutes #11: Global error handling and alerts](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=11&ab_channel=DotVVM)
+* [DotVVM Minutes #12: Integrate JS components using Composite control and Knockout binding handler](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=12&ab_channel=DotVVM)
+* [DotVVM Minutes #13: Five different types of static commands](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=13&ab_channel=DotVVM)
+* [DotVVM Minutes #14: UI for long-running operations using SignalR](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=13&ab_channel=DotVVM)
 
 

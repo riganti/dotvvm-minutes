@@ -1,0 +1,53 @@
+﻿@viewModel SimpleCalculator.ViewModels.Default6ViewModel, SimpleCalculator
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="calculator">
+        <div class="display">{{value: Value}}</div>
+
+        <div class="keys">
+            <dot:Button Text="C"
+                        Click="{staticCommand: Value = 0}"
+                        style="grid-column-end: span 2" />
+            <dot:Button Text="&lt;"
+                        Click="{staticCommand: Value = (Value - (Value % 10)) / 10}" />
+            <dot:Button Text="+"
+                        Click="{staticCommand: Operation = '+'; FirstValue = Value; Value = 0}" />
+
+            <dot:Button Text="7"
+                        Click="{staticCommand: Value = Value * 10 + 7}" />
+            <dot:Button Text="8"
+                        Click="{staticCommand: Value = Value * 10 + 8}" />
+            <dot:Button Text="9"
+                        Click="{staticCommand: Value = Value * 10 + 9}" />
+            <dot:Button Text="-"
+                        Click="{staticCommand: Operation = '-'; FirstValue = Value; Value = 0}" />
+
+            <dot:Button Text="4"
+                        Click="{staticCommand: Value = Value * 10 + 4}" />
+            <dot:Button Text="5"
+                        Click="{staticCommand: Value = Value * 10 + 5}" />
+            <dot:Button Text="6"
+                        Click="{staticCommand: Value = Value * 10 + 6}" />
+            <dot:Button Text="*"
+                        Click="{staticCommand: Operation = '*'; FirstValue = Value; Value = 0}" />
+
+            <dot:Button Text="1"
+                        Click="{staticCommand: Value = Value * 10 + 1}" />
+            <dot:Button Text="2"
+                        Click="{staticCommand: Value = Value * 10 + 2}" />
+            <dot:Button Text="3"
+                        Click="{staticCommand: Value = Value * 10 + 3}" />
+            <dot:Button Text="/"
+                        Click="{staticCommand: Operation = '/'; FirstValue = Value; Value = 0}" />
+
+            <dot:Button Text="0"
+                        Click="{staticCommand: Value = Value * 10 + 0}"
+                        style="grid-column-end: span 2" />
+            <dot:Button Text="="
+                        Click="{command: _this.CalculateTotal()}"
+                        style="grid-column-end: span 2" />
+        </div>
+    </div>
+
+</dot:Content>

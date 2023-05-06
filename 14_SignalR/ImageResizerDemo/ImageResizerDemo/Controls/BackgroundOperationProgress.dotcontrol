@@ -1,0 +1,21 @@
+﻿@viewModel ImageResizerDemo.Services.BackgroundOperations.BackgroundOperationProgress, ImageResizerDemo
+@import ImageResizerDemo.Services.BackgroundOperations
+@js backgroundOperation
+
+<div class="jumbotron">
+    <h2 class="display-4">Working on it...</h2>
+
+    <p class="lead">{{value: Description}}</p>
+    <div class="progress">
+        <div class="progress-bar"
+             class-bg-success="{value: IsCompleted && !IsError}"
+             class-bg-danger="{value: IsCompleted && IsError}"
+             role="progressbar"
+             style-width="{value: Math.Round(Percent * 100) + "%"}"
+             aria-valuenow="{value: Math.Round(Percent * 100)}"
+             aria-valuemin="0"
+             aria-valuemax="100"></div>
+    </div>
+</div>
+
+

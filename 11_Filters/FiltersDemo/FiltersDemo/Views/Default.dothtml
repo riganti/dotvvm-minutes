@@ -1,0 +1,60 @@
+﻿@viewModel FiltersDemo.ViewModels.DefaultViewModel, FiltersDemo
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Warehouse management</h1>
+    
+    <bp:Alert Type="{value: AlertType}" Text="{value: AlertText}" />
+
+    <bp:GridView DataSource="{value: Warehouses}">
+        <bp:GridViewTextColumn HeaderText="Name" Value="{value: Name}" />
+        <bp:GridViewTextColumn HeaderText="Location" Value="{value: Location}" />
+        <bp:GridViewTemplateColumn Width="130px">
+            <bp:Button Text="Reserve items" 
+                       Type="Primary"
+                       Click="{command: _root.StartReservation(Id)}"
+                       Validation.Enabled="false" />
+        </bp:GridViewTemplateColumn>
+    </bp:GridView>
+
+    <bp:ModalDialog DataContext="{value: ReservationDialog}"
+                    IsDisplayed="{value: IsOpen}"
+                    WidthRequest="600"
+                    HeaderText="Reserve items">
+        <ContentTemplate>
+
+            <bp:Alert Type="{value: AlertType}" Text="{value: AlertText}" />
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty to reserve</th>
+                    </tr>
+                </thead>
+                <dot:Repeater DataSource="{value: Quantities}" WrapperTagName="tbody">
+                    <tr>
+                        <td>{{value: Name}}</td>
+                        <td>
+                            <bp:NumericUpDown Value="{value: Quantity}"
+                                                MinValue="1"
+                                                MaxValue="999" />
+                        </td>
+                    </tr>
+                </dot:Repeater>
+            </table>
+
+        </ContentTemplate>
+        <FooterTemplate>
+            <bp:Button Text="Reserve"
+                       Type="Primary"
+                       IsSubmitButton="true"
+                       Click="{command: Reserve()}" />
+            <bp:Button Text="Cancel"
+                       Type="Danger"
+                       Click="{command: Close()}"
+                       Validation.Enabled="false" />
+        </FooterTemplate>
+    </bp:ModalDialog>
+
+</dot:Content>

@@ -1,0 +1,92 @@
+﻿@viewModel SimpleCalculator.ViewModels.MasterPageViewModel, SimpleCalculator
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SimpleCalculator</title>
+
+    <style>
+        nav li {
+            display: inline-block;
+            margin-right: 3em;
+        }
+        nav li.active {
+            font-weight: bold;
+        }
+
+        .calculator {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        .display {
+            width: 100%;
+            text-align: right;
+            font-size: 300%;
+            margin-bottom: .3em;
+        }
+
+        .keys {
+            display: grid;
+            grid-gap: .1em;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+            .keys input {
+                width: 100%;
+                height: 3em;
+            }
+    </style>
+
+</head>
+<body>
+
+    <nav PostBack.Update="true">
+        <ul>
+            <li class-active="{resource: Context.Route.RouteName == "Default"}">
+                <dot:RouteLink RouteName="Default">Translated to JS</dot:RouteLink>
+            </li>
+            <li class-active="{resource: Context.Route.RouteName == "Default2"}">
+                <dot:RouteLink RouteName="Default2">Call static method</dot:RouteLink>
+            </li>
+            <li class-active="{resource: Context.Route.RouteName == "Default3"}">
+                <dot:RouteLink RouteName="Default3">Call instance method</dot:RouteLink>
+            </li>
+            <li class-active="{resource: Context.Route.RouteName == "Default4"}">
+                <dot:RouteLink RouteName="Default4">Call static command service</dot:RouteLink>
+            </li>
+            <li class-active="{resource: Context.Route.RouteName == "Default5"}">
+                <dot:RouteLink RouteName="Default5">Call JS module</dot:RouteLink>
+            </li>
+            <li class-active="{resource: Context.Route.RouteName == "Default6"}">
+                <dot:RouteLink RouteName="Default6">Classic command</dot:RouteLink>
+            </li>
+        </ul>
+    </nav>
+
+    <dot:SpaContentPlaceHolder ID="MainContent" />
+
+    <code><pre ID="log"></pre></code>
+
+    <dot:InlineScript Dependencies="dotvvm">
+    const origFetch = window.fetch;
+    window.fetch = async function (url, req) {
+        if (req.method && req.method.toLowerCase() === "post") {
+            const res = await origFetch(url, req);
+            const origJson = res.json;
+            res.json = async function () {
+                const text = await res.text();
+                document.getElementById("log").innerText += "\r\n ⬆️ " + req.body.length + "   ⬇️ " + text.length;
+                return JSON.parse(text);
+            }
+            return res;
+        } else {
+            return await origFetch(url, req);
+        }
+
+    }
+    </dot:InlineScript>
+
+</body>
+</html>

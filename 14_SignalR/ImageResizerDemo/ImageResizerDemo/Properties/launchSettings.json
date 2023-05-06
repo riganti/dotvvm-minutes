@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ImageResizerDemo": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:58263;http://localhost:58264"
+    }
+  }
+}

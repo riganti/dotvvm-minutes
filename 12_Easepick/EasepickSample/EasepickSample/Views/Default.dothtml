@@ -1,0 +1,18 @@
+﻿@viewModel EasepickSample.ViewModels.DefaultViewModel, EasepickSample
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Easepick demo</h1>
+    <p>
+        Select date:
+        <br />
+        <cc:Easepick SelectedDate="{value: Date}" 
+                     Changed="{command: Changes = Changes + 1}" />
+        <br />
+        <dot:TextBox Text="{value: Date}" Type="Date" />
+    </p>
+    <p>
+        Date changes: {{value: Changes}}
+    </p>
+
+</dot:Content>

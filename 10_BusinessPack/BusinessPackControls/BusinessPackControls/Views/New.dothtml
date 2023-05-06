@@ -1,0 +1,59 @@
+﻿@viewModel BusinessPackControls.ViewModels.NewViewModel, BusinessPackControls
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Edit your profile</h1>
+
+    <form DataContext="{value: Profile}">
+        <div class="form-field">
+            <label>Name</label>
+            <bp:TextBox Text="{value: FullName}" />
+        </div>
+        <div class="form-field">
+            <label>Country</label>
+            <bp:DropDownList DataSource="{value: _root.Countries}"
+                             SelectedValue="{value: CountryId}"
+                             ItemValueBinding="{value: Id}"
+                             ItemTextBinding="{value: Name}"
+                             AllowUnselect="false">
+                <ItemTemplate>
+                    <div class="country-flag">
+                        <img src="{value: FlagUrl}" alt="{value: Name}" />
+                        <span>{{value: Name}}</span>
+                    </div>
+                </ItemTemplate>
+            </bp:DropDownList>
+        </div>
+        <div class="form-field">
+            <label>Interests</label>
+            <bp:MultiSelect DataSource="{value: _root.Interests}"
+                            SelectedValues="{value: InterestIds}"
+                            ItemTextBinding="{value: Name}"
+                            ItemValueBinding="{value: Id}" />
+        </div>
+        <div class="form-field">
+            <label>Profile image</label>
+            <bp:FileUpload Data="{value: _root.ProfileImage}"
+                           UploadCompleted="{command: _root.ProfileImageUploaded()}"
+                           Validation.Enabled="false" />
+            <img src="{value: ProfileImageUrl}"
+                 alt="{value: FullName}"
+                 Visible="{value: ProfileImageUrl != null}"
+                 class="profile-image" />
+        </div>
+
+        <div class="form-buttons">
+            <bp:Button Text="Save"
+                       Type="Primary"
+                       Click="{command: _root.Save()}"
+                       IsSubmitButton="true" />
+            <bp:Button Text="Cancel"
+                       Type="Danger"
+                       Click="{command: _root.Cancel()}"
+                       Validation.Enabled="false" />
+        </div>
+    </form>
+
+</dot:Content>
+

@@ -1,0 +1,20 @@
+{
+  "name": "easepicksample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "npx esbuild wwwroot/dotvvm-easepick.ts --bundle --format=esm --outdir=wwwroot",
+	  "build:prod": "npx esbuild wwwroot/dotvvm-easepick.ts --minify --format=esm --bundle --outdir=wwwroot"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@easepick/bundle": "^1.2.1",
+    "@types/knockout": "^3.4.72",
+    "dotvvm-types": "^4.1.0",
+    "esbuild": "^0.17.13",
+    "typescript": "^5.0.2"
+  }
+}

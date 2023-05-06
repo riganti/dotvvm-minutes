@@ -1,0 +1,44 @@
+﻿@viewModel ImageResizerDemo.ViewModels.DefaultViewModel, ImageResizerDemo
+@masterPage Views/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h1>Batch Image Resizer</h1>
+
+    <form class="form" Visible="{value: CurrentStep == 0}">
+        <div class="form-group">
+            <label>Upload your images</label>
+            <div>
+                <dot:FileUpload UploadedFiles="{value: Images}" AllowMultipleFiles="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Requested heights</label>
+            <dot:Repeater class="form-check" DataSource="{value: AvailableHeights}">
+                <dot:CheckBox class="form-check-input" 
+                              html:id="{value: $"size{_this}"}" 
+                              CheckedValue="{value: _this}" 
+                              CheckedItems="{value: _parent.RequestedHeights}" />
+                <label class="form-check-label"
+                       for="{value: $"size{_this}"}">{{value: _this}}px</label>
+                <br />
+            </dot:Repeater>
+        </div>
+        <div class="form-group">
+            <dot:Button class="btn btn-primary" Text="Start processing" Click="{command: StartProcessing()}" />
+        </div>
+    </form>
+
+    <div Visible="{value: CurrentStep == 1}">
+        <cc:BackgroundOperationProgress DataContext="{value: Progress}" />
+
+        <p class="lead" DataContext={value: Progress} >
+            <a href="{value: _root.ResultArchiveUrl}" 
+               class="btn btn-primary btn-lg" 
+               role="button"
+               Visible="{value: IsCompleted && Percent > 0}">Download files</a>
+        </p>
+    </div>
+
+
+</dot:Content>

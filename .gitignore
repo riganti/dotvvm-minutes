@@ -335,3 +335,8 @@ ASALocalRun/
 
 # Bower libraries
 **/wwwroot/lib/
+
+# Custom content
+/10_BusinessPack/BusinessPackControls/BusinessPackControls/wwwroot/*.jpg
+/10_BusinessPack/BusinessPackControls/BusinessPackControls/temp
+/14_SignalR/ImageResizerDemo/ImageResizerDemo/wwwroot/output
