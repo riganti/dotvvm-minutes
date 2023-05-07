@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "bootstrap@5.2.3",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "bootstrap-icons@1.10.5",
+      "destination": "wwwroot/lib/bootstrap-icons/"
+    }
+  ,
+{
+  "provider": "cdnjs",
+  "library": "showdown@2.1.0",
+  "destination": "wwwroot/lib/showdown/"
+}
+]
+}

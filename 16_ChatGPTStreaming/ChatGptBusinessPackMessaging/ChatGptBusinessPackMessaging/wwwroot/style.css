@@ -1,0 +1,68 @@
+﻿.message-card {
+    display: flex;
+}
+
+    .message-card .card {
+        flex-grow: 1;
+        max-width: 80%;
+    }
+
+        .message-card .card .card-body {
+            white-space: pre-wrap;
+        }
+
+    .message-card .icon {
+        font-size: 160%;
+        padding: .5em;
+    }
+
+    .message-card.error .card {
+        background-color: #f1aeb5;
+        color: maroon;
+    }
+
+    .message-card.error .arrow {
+        fill: #f1aeb5;
+        stroke: rgba(0, 0, 0, 0.176);
+    }
+
+    .message-card.ignored {
+        text-decoration: line-through;
+        color: #888;
+    }
+
+.message-card-user {
+    flex-direction: row-reverse;
+}
+
+    .message-card-user .card {
+        background-color: #fff3cd;
+    }
+
+    .message-card-user .arrow {
+        fill: #fff3cd;
+        stroke: rgba(0, 0, 0, 0.176);
+        transform: translateY(1.75em);
+    }
+
+.message-card-bot {
+    flex-direction: row;
+}
+
+    .message-card-bot .card {
+        background-color: #e0cffc;
+    }
+
+    .message-card-bot .arrow {
+        fill: #e0cffc;
+        stroke: rgba(0, 0, 0, 0.176);
+        transform: translateY(1.75em) scaleX(-1);
+    }
+
+.message-card-loading {
+    flex-direction: row;
+}
+
+    .message-card-loading .card {
+        background-color: #f0f0f0;
+    }

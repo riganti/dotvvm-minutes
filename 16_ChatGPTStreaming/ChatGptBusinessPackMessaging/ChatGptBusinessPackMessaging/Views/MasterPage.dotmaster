@@ -1,0 +1,17 @@
+﻿@viewModel ChatGptBusinessPackMessaging.ViewModels.MasterPageViewModel, ChatGptBusinessPackMessaging
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ChatGptBusinessPackMessaging</title>
+    <dot:RequiredResource Name="Styles"/>
+</head>
+<body>
+
+    <div class="container">
+        <dot:ContentPlaceHolder ID="MainContent" />
+    </div>
+
+</body>
+</html>

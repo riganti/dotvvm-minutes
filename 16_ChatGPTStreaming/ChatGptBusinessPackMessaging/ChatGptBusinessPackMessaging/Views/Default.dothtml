@@ -1,0 +1,86 @@
+﻿@viewModel ChatGptBusinessPackMessaging.ViewModels.DefaultViewModel, ChatGptBusinessPackMessaging
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <bp:MessagingConnection ServiceUrl="{value: $"/hubs/ChatGpt?conversationId={ConversationId}"}"
+                            ConnectionId="ChatGpt">
+        <bp:MessageHandler MethodName="MessageStarted"
+                           Command="{staticCommand: () => Messages.Add("")}" />
+        <bp:MessageHandler MethodName="NewMessageChunk"
+                           Command="{staticCommand: (string chunk) => Messages[Messages.Count - 1] = Messages[Messages.Count - 1] + chunk}" />
+        <bp:MessageHandler MethodName="MessageCompleted"
+                           Command="{staticCommand: () => UserCanWrite = true}" />
+    </bp:MessagingConnection>
+
+    <div class="d-flex flex-column vh-100">
+        <div class="flex-grow-1">
+
+            <%--Initial message--%>
+            <div class="message-card message-card-bot">
+                <div class="icon">
+                    <i class="bi bi-robot"></i>
+                </div>
+                <svg class="arrow" width="10" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M-1 0 L10 10 L-1 20 Z" />
+                </svg>
+                <div class="card my-3">
+                    <div class="card-body">Hi there! How can DotVVM chatbot help you?</div>
+                </div>
+            </div>
+
+            <%--Conversation messages--%>
+            <dot:Repeater DataSource="{value: Messages}">
+
+                <div class="{value: "message-card message-card-" + (_index % 2 == 0 ? "user" : "bot")}">
+                    <div class="icon">
+                        <i class="{value: "bi bi-" + (_index % 2 == 0 ? "person" : "robot")}"></i>
+                    </div>
+                    <svg class="arrow" width="10" height="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M-1 0 L10 10 L-1 20 Z" />
+                    </svg>
+                    <div class="card my-3">
+                        <cc:MarkdownViewer Text="{value: _this}" class="card-body" />
+                    </div>
+                </div>
+
+            </dot:Repeater>
+        </div>
+        <div class="p-4">
+
+            <form class="d-flex">
+                <div class="flex-grow-1 me-4">
+                    <dot:TextBox Text="{value: CurrentMessage}"
+                                 Validator.Value="{value: CurrentMessage}"
+                                 Validator.InvalidCssClass="has-error"
+                                 class="form-control" />
+                </div>
+                <div>
+                    <dot:Button Click="{staticCommand:
+                                            UserCanWrite = false;
+                                            Messages.Add(CurrentMessage);
+                                            _messaging.GetConnection("ChatGpt").InvokeAsync("SendMessage", CurrentMessage);
+                                            CurrentMessage = "";
+                                       }"
+                                ButtonTagName="button"
+                                IsSubmitButton="true"
+                                PostBack.Concurrency="Deny"
+                                class="btn btn-primary"
+                                Enabled="{value: UserCanWrite}">
+                        <i class="bi bi-send"></i>
+                        Send
+                    </dot:Button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <dot:InlineScript Dependencies="dotvvm">
+    dotvvm.events.initCompleted.subscribe(function () {
+        dotvvm.viewModels.root.viewModel.UserCanWrite.subscribe(function () {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+    });
+    </dot:InlineScript>
+
+</dot:Content>
