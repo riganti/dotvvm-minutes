@@ -17,5 +17,6 @@ This repository contains code samples for [DotVVM Minutes](https://www.youtube.c
 * [DotVVM Minutes #13: Five different types of static commands](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=13&ab_channel=DotVVM)
 * [DotVVM Minutes #14: UI for long-running operations using SignalR](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=14&ab_channel=DotVVM)
 * [DotVVM Minutes #15: UI for long-running operations using Business Pack Messaging](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=15&ab_channel=DotVVM)
+* [DotVVM Minutes #16: ChatGPT integration with Business Pack Messaging](https://www.youtube.com/watch?v=Bzk90cx-mgY&list=PLq1wAETqUjIblsSktbUnCften_zU6L3hb&index=16&ab_channel=DotVVM)
 
 
