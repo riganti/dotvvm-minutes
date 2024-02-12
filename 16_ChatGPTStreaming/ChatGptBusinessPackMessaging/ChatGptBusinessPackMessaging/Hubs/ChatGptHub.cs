@@ -29,7 +29,7 @@ namespace ChatGptBusinessPackMessaging.Hubs
 
             return base.OnConnectedAsync();
         }
-        
+
         public async Task SendMessage(string message)
         {
             message = message.Trim();
@@ -39,7 +39,7 @@ namespace ChatGptBusinessPackMessaging.Hubs
 
             // find the conversation
             var conversation = GetOrCreateCurrentConversation();
-            conversation.Messages.Add(new ChatMessage(ChatRole.User, message));
+            conversation.Messages.Add(new ChatRequestUserMessage(message));
 
             try
             {
@@ -50,33 +50,25 @@ namespace ChatGptBusinessPackMessaging.Hubs
                 // TODO: you should perform additional validations on the max conversation length etc.
 
                 // get response from ChatGPT
-                var response = await openAiClient.GetChatCompletionsStreamingAsync(ModelName, conversation);
+                var response = await openAiClient.GetChatCompletionsStreamingAsync(conversation);
 
-                // get first choice
-                var enumerator = response.Value.GetChoicesStreaming().GetAsyncEnumerator();
-                if (!await enumerator.MoveNextAsync())
-                {
-                    throw new Exception("No choices returned.");
-                }
-                var choice = enumerator.Current;
-                    
                 // stream the chunks of the message
                 var replyBuilder = new StringBuilder();
-                await foreach (var chunk in choice.GetMessageStreaming())
+                await foreach (var chunk in response.EnumerateValues())
                 {
-                    if (chunk.Content == null)
+                    if (chunk.ContentUpdate == null)
                     {
                         continue;
                     }
 
                     await Clients.Group(GetCurrentConversationId().ToString().ToLower())
-                        .SendAsync("NewMessageChunk", chunk.Content);
-                    
-                    replyBuilder.Append(chunk.Content);
+                        .SendAsync("NewMessageChunk", chunk.ContentUpdate);
+
+                    replyBuilder.Append(chunk.ContentUpdate);
                 }
 
                 // store the message in the cache
-                conversation.Messages.Add(new ChatMessage(ChatRole.Assistant, replyBuilder.ToString()));
+                conversation.Messages.Add(new ChatRequestAssistantMessage(replyBuilder.ToString()));
             }
             catch
             {
@@ -87,7 +79,7 @@ namespace ChatGptBusinessPackMessaging.Hubs
             await Clients.Group(GetCurrentConversationId().ToString().ToLower())
                 .SendAsync("MessageCompleted");
         }
-        
+
         private Guid GetCurrentConversationId()
         {
             return Guid.Parse(Context.GetHttpContext().Request.Query["conversationId"]);
@@ -97,11 +89,15 @@ namespace ChatGptBusinessPackMessaging.Hubs
         {
             return conversations.GetOrAdd(GetCurrentConversationId(), _ =>
             {
-                var conversation = new ChatCompletionsOptions();
-                conversation.Messages.Add(new ChatMessage(ChatRole.System, """
-                    You are a chatbot which answers questions about the DotVVM framework. If you don't know the answer.
-                    If you don't know the anwer, point the user to the documentation at https://www.dotvvm.com/docs
-                    """));
+                var conversation = new ChatCompletionsOptions()
+                {
+                    DeploymentName = ModelName
+                };
+                conversation.Messages.Add(new ChatRequestSystemMessage(
+                    """
+                           You are a chatbot which answers questions about the DotVVM framework.
+                           If you don't know the anwer, point the user to the documentation at https://www.dotvvm.com/docs
+                           """));
                 return conversation;
             });
         }

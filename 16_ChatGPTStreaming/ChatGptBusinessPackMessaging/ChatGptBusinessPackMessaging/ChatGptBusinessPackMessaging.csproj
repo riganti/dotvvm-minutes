@@ -14,10 +14,10 @@
     <Content Include="Controls\MarkdownViewer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
-    <PackageReference Include="DotVVM.AspNetCore" Version="4.1.0" />
-    <PackageReference Include="DotVVM.BusinessPack.Messaging" Version="4.1.4-preview01-messaging-447547" />
-    <PackageReference Include="DotVVM.HotReload.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.13" />
+    <PackageReference Include="DotVVM.AspNetCore" Version="4.3.0-preview02-final" />
+    <PackageReference Include="DotVVM.BusinessPack.Messaging" Version="4.2.0" />
+    <PackageReference Include="DotVVM.HotReload.AspNetCore" Version="4.3.0-preview02-final" />
 
   </ItemGroup>
 </Project>
